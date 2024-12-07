@@ -20,5 +20,18 @@ sequence:
     domain: mobile_app
     type: notify
     device_id: !input notify_device
-    title: "Test notification title"
-    message: "Test notification message"
+    title: "{{title}}"
+    message: "{{message}}"
+fields:
+  title:
+    selector:
+      text: null
+    name: title
+    description: Enter a title for your notification
+    required: true
+  message:
+    selector:
+      text: null
+    name: message
+    description: Enter message for your notification
+    required: true
