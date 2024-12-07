@@ -35,7 +35,7 @@ fields:
   message:
     selector:
       text:
-        multiline: true
+        multiline: false
         type: text
     name: message
     description: Enter message for your notification
