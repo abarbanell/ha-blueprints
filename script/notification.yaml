@@ -3,7 +3,7 @@ blueprint:
   author: tobiasabarbanell
   description: > 
     A script that does a notification on one or more mobile phones
-  source_url: https://gitlab.com/abarbanell/ha-blueprints/script/notification.yaml
+  source_url: https://gitlab.com/abarbanell/ha-blueprints/-/blob/main/script/notification.yaml
   domain: script
   homeassistant:
     min_version: 2024.11.0
