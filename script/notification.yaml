@@ -23,7 +23,7 @@ sequence:
     domain: mobile_app
     type: notify
     device_id: !input notify_device
-    title: "[ !input hostname ]{{ title }}"
+    title: "[ {{ !input hostname }} ] {{ title }}"
     message: "{{ message }}"
 
 fields:
