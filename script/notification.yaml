@@ -15,6 +15,9 @@ blueprint:
         device:
           integration: mobile_app
           multiple: false
+    hostname:
+      name: hostname
+      default: ""
 sequence:
   - alias: "Send notification"
     domain: mobile_app
