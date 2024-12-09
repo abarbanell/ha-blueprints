@@ -35,13 +35,6 @@ sequence:
 
 variables:
   tag: !input tag
-    # name: tag
-    # description: tag for each message
-    # required: false
-    # selector:
-    #   text:
-    #     multiline: false
-    #     type: text
 
 fields:
   title:
