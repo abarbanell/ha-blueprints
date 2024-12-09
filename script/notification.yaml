@@ -40,7 +40,7 @@ fields:
     description: tag for each message
     required: false
     selector:
-      text: 
+      text:
         multiline: false
         type: text
         default: "{{ tag }}"
