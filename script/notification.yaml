@@ -2,24 +2,24 @@ blueprint:
   name: Notification Script Blueprint
   author: tobiasabarbanell
   description: > 
-    A script that does a notification on one or more mobile phones
+    A script that sends a notification to one or more mobile phones
   source_url: https://raw.githubusercontent.com/abarbanell/ha-blueprints/refs/heads/main/script/notification.yaml
   domain: script
   homeassistant:
     min_version: 2024.11.0
   input:
     notify_device:
-      name: Devices
+      name: Mobile devices
       default: ""
       selector:
         device:
           integration: mobile_app
-          multiple: false
-    hostname:
-      name: hostname
+          multiple: true
+    tag:
+      name: tag
       default: ""
 sequence:
-  - alias: "Send notification"
+  - alias: "Send mobile notification"
     domain: mobile_app
     type: notify
     device_id: !input notify_device
@@ -27,12 +27,7 @@ sequence:
     message: "{{ message }}"
 
 fields:
-  hostname:
-    default: !input hostname
-    selector:
-      text:
-        multiline: false
-        type: text  
+  tag: !input tag
   title:
     selector:
       text:
@@ -44,7 +39,7 @@ fields:
   message:
     selector:
       text:
-        multiline: false
+        multiline: true
         type: text
     name: message
     description: Enter message for your notification
