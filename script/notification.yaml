@@ -23,16 +23,15 @@ sequence:
     repeat:
       for_each: !input notify_devices
       sequence:
-        - device_id: "{{ device_attr(repeat.item, 'unique_id' }}"
-          domain: mobile_app
-          type: notify
-          title: >
-            {% if tag %}
-              {{ tag }} - {{ title }}
-            {% else %} 
-              {{ title }}
-            {% endif %}
-          message: "{{ message }}"
+        - service: "notify.mobile_app_{{ device_attr(repeat.item, 'name') | slugify }}"
+          data:
+            title: >
+              {% if tag %}
+                {{ tag }} - {{ title }}
+              {% else %} 
+                {{ title }}
+              {% endif %}
+            message: "{{ message }}"
 
 fields:
   tag:
