@@ -16,8 +16,8 @@ blueprint:
           integration: mobile_app
           multiple: true
     tag:
-      name: tag
-      default: ""
+      name: Tag for messages
+      default: "no-tag"
 sequence:
   - alias: "Send mobile notification"
     repeat:
@@ -38,7 +38,6 @@ fields:
   tag:
     name: tag
     description: tag for each message
-    default: !input tag
     required: false
     selector:
       text:
