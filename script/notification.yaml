@@ -8,9 +8,9 @@ blueprint:
   homeassistant:
     min_version: 2024.11.0
   input:
-    notify_device:
+    notify_devices:
       name: Mobile devices
-      default: ""
+      default: []
       selector:
         device:
           integration: mobile_app
@@ -20,16 +20,19 @@ blueprint:
       default: ""
 sequence:
   - alias: "Send mobile notification"
-    domain: mobile_app
-    type: notify
-    device_id: !input notify_device
-    title: >
-      {% if tag %}
-        \[{{ tag }}\] {{ title }}
-      {% else %} 
-        {{ title }}
-      {% endif %}
-    message: "{{ message }}"
+    repeat:
+      for_each: !input notify_devices
+      sequence:
+        device_id: "{{ repeat.item }}"
+        domain: mobile_app
+        type: notify
+        title: >
+          {% if tag %}
+            \[{{ tag }}\] {{ title }}
+          {% else %} 
+            {{ title }}
+          {% endif %}
+        message: "{{ message }}"
 
 fields:
   tag: !input tag
