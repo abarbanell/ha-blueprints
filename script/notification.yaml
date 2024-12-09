@@ -38,12 +38,12 @@ fields:
   tag:
     name: tag
     description: tag for each message
+    default: !input tag
     required: false
     selector:
       text:
         multiline: false
         type: text
-        default: "{{ tag }}"
   title:
     selector:
       text:
