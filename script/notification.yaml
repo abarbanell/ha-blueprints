@@ -37,6 +37,7 @@ sequence:
 fields:
   tag:
     name: tag
+    description: tag for each message
     required: false
     selector:
       test: 
