@@ -23,7 +23,7 @@ sequence:
     repeat:
       for_each: !input notify_devices
       sequence:
-        - device_id: "{{ repeat.item }}"
+        - device_id: "{{ device_attr(repeat.item, 'unique_id' }}"
           domain: mobile_app
           type: notify
           title: >
