@@ -27,7 +27,7 @@ sequence:
           data:
             title: >
               {% if tag %}
-                \[{{ tag }}\] {{ title }}
+                [{{ tag }}] {{ title }}
               {% else %} 
                 {{ title }}
               {% endif %}
