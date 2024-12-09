@@ -28,7 +28,7 @@ sequence:
         type: notify
         title: >
           {% if tag %}
-            \[{{ tag }}\] {{ title }}
+            \[{{ tag }}\] {{ title }} - {{ repeat.item }}
           {% else %} 
             {{ title }}
           {% endif %}
