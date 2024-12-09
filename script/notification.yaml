@@ -35,7 +35,14 @@ sequence:
         message: "{{ message }}"
 
 fields:
-  tag: !input tag
+  tag:
+    name: tag
+    required: false
+    selector:
+      test: 
+        multiline: false
+        type: text
+        default: "{{ tag }}"
   title:
     selector:
       text:
