@@ -23,7 +23,12 @@ sequence:
     domain: mobile_app
     type: notify
     device_id: !input notify_device
-    title: "{{ hostname }}: {{ title }}"
+    title: >
+      {% if tag %}
+        \[{{ tag }}\] {{ title }}
+      {% else %} 
+        {{ title }}
+      {% endif %}
     message: "{{ message }}"
 
 fields:
