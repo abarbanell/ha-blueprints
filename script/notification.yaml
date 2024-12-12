@@ -2,7 +2,7 @@ blueprint:
   name: Notification Script Blueprint
   author: tobiasabarbanell
   description: > 
-    A script that sends a notification to one or more mobile phones
+    A script that sends a notification to one or more mobile phones and also a persistent notification
   source_url: https://raw.githubusercontent.com/abarbanell/ha-blueprints/refs/heads/main/script/notification.yaml
   domain: script
   homeassistant:
@@ -13,7 +13,8 @@ blueprint:
       default: []
       selector:
         device:
-          integration: mobile_app
+          filter:
+            - integration: mobile_app
           multiple: true
     tag:
       name: Tag for messages
@@ -32,6 +33,16 @@ sequence:
                 {{ title }}
               {% endif %}
             message: "{{ message }}"
+  - alias: Send persistent notification
+    service: "notify.persistent_notification"
+    data:
+      title: >
+        {% if tag %}
+          [{{ tag }}] {{ title }}
+        {% else %} 
+          {{ title }}
+        {% endif %}
+      message: "{{ message }}"
 
 variables:
   tag: !input tag
